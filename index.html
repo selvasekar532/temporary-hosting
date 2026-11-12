@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ED6A5A"><title>Ithought Financial Wellness Challenge</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap');
+:root{
+ --coral:#ED6A5A;--sand:#F3E7DA;--amber:#FBB13C;--mint:#37C0A2;
+ --ink:#252525;--muted:#686868;--line:#e7ded6;--paper:#fff;--bg:#fbf8f5;
+ --teal:var(--mint);--lime:var(--amber);--grey:var(--muted);--cream:var(--sand);
+ --red:#bd493e;--green:#21866f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 'Poppins',Arial,sans-serif}
+header{background:#fff;color:var(--ink);padding:18px 18px 16px;border-bottom:1px solid var(--line)}
+.header-inner{max-width:920px;margin:auto;display:flex;align-items:center;gap:14px}
+.brand-mark{width:48px;height:48px;flex:0 0 48px}
+.brand-copy{min-width:0}
+.brand-name{font-weight:800;font-size:17px;letter-spacing:-.4px;line-height:1.25}
+.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.7px;text-transform:uppercase;font-weight:600}
+main{max-width:760px;margin:28px auto;padding:0 16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 8px 28px rgba(67,45,31,.055);margin-bottom:18px}
+h1,h2,h3{line-height:1.08;margin:0 0 12px;font-family:'Bebas Neue','Poppins',sans-serif;letter-spacing:.35px;font-weight:400}
+h1{font-size:36px}h2{font-size:27px;color:#252525}
+p{margin:8px 0 14px}
+.muted{color:var(--muted);font-size:13px}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input[type=text],input[type=email],input[type=password],input[type=url]{width:100%;padding:14px 15px;border:1px solid #d9d0c8;border-radius:10px;font:14px 'Poppins',Arial,sans-serif;background:#fff;color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s}
+input:focus{border-color:var(--mint);box-shadow:0 0 0 3px rgba(55,192,162,.14)}
+input[type=checkbox]{accent-color:var(--mint);width:16px;height:16px;vertical-align:middle}
+button{border:0;border-radius:10px;padding:13px 19px;font:600 14px 'Poppins',Arial,sans-serif;cursor:pointer;background:var(--coral);color:white;transition:transform .12s,filter .12s}
+button:hover{filter:brightness(.97);transform:translateY(-1px)}
+button.secondary{background:var(--sand);color:var(--ink)}
+button:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1}
+.pill{display:inline-block;padding:6px 12px;border-radius:30px;background:#e8f7f3;color:#177f69;font-weight:700;font-size:11px;letter-spacing:.25px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.timer{font-size:24px;font-weight:800;color:#252525;font-variant-numeric:tabular-nums}
+.timer.warn{color:var(--red)}
+.progress{height:8px;background:#f0e8e1;border-radius:20px;overflow:hidden;margin:14px 0}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--amber),var(--mint));transition:width .2s}
+.option{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0;cursor:pointer;font-weight:500;background:#fff;transition:border-color .12s,background .12s}
+.option:has(input:checked){border:2px solid var(--mint);background:#f0faf7;padding:13px}
+.option input{margin-top:5px;accent-color:var(--mint);transform:scale(1.12)}
+.hidden{display:none!important}
+.notice{background:#fbf4ed;border-left:4px solid var(--amber);padding:13px 14px;border-radius:8px;font-size:13px}
+.success{color:var(--green)}.error{color:var(--red)}
+.stepgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.stepbox{background:#f8f2ec;border-radius:9px;padding:11px 4px;text-align:center;font-size:11px}
+.stepbox b{display:block;font-size:19px;color:#21866f}
+.small{font-size:11px;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:10px 0 30px}
+.section-kicker{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--coral);margin-bottom:7px}
+.brand-intro{font-size:13px;line-height:1.65;color:#4f4a46;max-width:650px;margin:0 0 18px}
+.brand-rule{height:4px;width:100%;border-radius:5px;background:linear-gradient(90deg,var(--coral) 0 25%,var(--sand) 25% 50%,var(--amber) 50% 75%,var(--mint) 75%);margin:0 0 20px}
+@media(max-width:520px){
+ header{padding:14px 14px}.header-inner{gap:10px}.brand-mark{width:42px;height:42px;flex-basis:42px}.brand-name{font-size:15px}.brand-sub{font-size:9px}
+ main{margin:17px auto;padding:0 12px}.panel{padding:20px;border-radius:15px}h1{font-size:32px}h2{font-size:24px}
+ .row{align-items:flex-start}.stepgrid{grid-template-columns:repeat(5,minmax(0,1fr))}.stepbox{font-size:9px}.stepbox b{font-size:15px}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="Milestones2Wealth mark">
+   <path d="M7 48V10l17 18 8-9v31" fill="none" stroke="#ED6A5A" stroke-width="6" stroke-linejoin="miter"/>
+   <path d="M57 16v38L40 36l-8 9V14" fill="none" stroke="#37C0A2" stroke-width="6" stroke-linejoin="miter"/>
+  </svg>
+  <div class="brand-copy">
+   <div class="brand-name">Milestones2Wealth</div>
+   <div class="brand-sub">An Ithought financial journey</div>
+  </div>
+ </div>
+</header>
+<main>
+<section id="register" class="panel">
+ <div class="section-kicker">Ithought Financial Wellness Challenge</div>
+ <div class="brand-intro"><b>Milestones2Wealth</b> is Ithought MFD’s step-by-step wealth journey, founded by <b>Shyam Sekhar</b>, where every life goal becomes a planned financial milestone. It helps individuals move from earning to enduring wealth through disciplined, goal-based investing.</div>
+ <div class="brand-rule"></div>
+ <span class="pill">15 questions · 5 steps · 150 points</span>
+ <h1 style="margin-top:14px">Your financial journey starts here.</h1>
+ <p>Take a quick walk through the five steps of a financial plan. You have <b>7 minutes</b> to complete the quiz.</p>
+ <div class="notice">One attempt per email ID. Make sure to complete the quiz once you start.</div>
+ <label for="name">Your name</label><input id="name" type="text" maxlength="80" autocomplete="name" placeholder="Enter your name">
+ <label for="email">Email ID</label><input id="email" type="email" maxlength="254" autocomplete="email" placeholder="Enter your email">
+ <label style="font-weight:500"><input id="consent" type="checkbox"> I agree that Ithought may contact me on this email about my result.</label>
+ <p class="small">Your details will be used for the stated follow-up. Do not enter another person's email address.</p>
+ <button id="startBtn" onclick="startQuiz()">Start the quiz</button>
+ <p id="regMsg" class="error" role="alert"></p>
+</section>
+
+<section id="quiz" class="panel hidden">
+ <div class="row"><span class="pill" id="stepPill">Step 1 of 5</span><span class="timer" id="timer">07:00</span></div>
+ <div class="progress"><div id="progressFill"></div></div>
+ <div class="row muted"><span id="questionCount">Question 1 of 15</span><span>10 points per correct answer</span></div>
+ <h2 id="stepTitle" style="margin-top:16px"></h2>
+ <h1 id="questionText"></h1>
+ <div id="options"></div>
+ <p id="quizMsg" class="error" role="alert"></p>
+ <div class="actions"><button id="backBtn" class="secondary" onclick="move(-1)">Back</button><button id="nextBtn" onclick="move(1)">Next</button></div>
+</section>
+
+<section id="result" class="panel hidden">
+ <span class="pill success">Attempt submitted</span><h1 style="margin-top:12px">Your result</h1>
+ <div class="row"><div><div class="muted">Your score</div><div style="font-size:34px;font-weight:800;color:#21866f" id="score">0 / 150</div></div><div><div class="muted">Time taken</div><div class="timer" id="resultTime">00:00</div></div></div>
+ <p id="rankLine">Your result has been recorded successfully.</p>
+ <h2>Points by financial planning step</h2><div id="stepScores" class="stepgrid"></div>
+ <p class="muted">Correct answers are not displayed.</p>
+</section>
+</main><footer><b>Milestones2Wealth</b> · An Ithought financial journey · Financial education quiz</footer>
+<script>
+// --- PASTE YOUR GOOGLE WEB APP URL HERE ---
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbyRfhh3r5ENc0xHTrtOvupZPseJFDeTc7V7Bs87SHf9aK-0XkyXa5s5zC7Rzp8R0Fop/exec"; 
+
+const QUIZ_SECONDS = 420;
+const $ = id => document.getElementById(id);
+const screens = ["register","quiz","result"];
+let userDetails = {name: "", email: ""}, answers = {}, index = 0, tick = null, endAt = 0, startTime = 0;
+
+const quizData = [
+  { step: 1, stepTitle: "Check Your Financial Health", q: "Your net worth is:", opts: {A: "Your monthly take-home salary", B: "What you own minus what you owe", C: "The total of your bank balances", D: "The value of your house"}, ans: "B" },
+  { step: 1, stepTitle: "Check Your Financial Health", q: "Where should you ideally keep your emergency fund?", opts: {A: "In equity mutual funds", B: "In real estate", C: "In a savings account, sweep-in FD or liquid fund", D: "In gold jewellery"}, ans: "C" },
+  { step: 1, stepTitle: "Check Your Financial Health", q: "In the 50-30-20 budgeting rule, what is the 20% meant for?", opts: {A: "Savings and investments", B: "Rent and EMIs", C: "Eating out and travel", D: "Income tax"}, ans: "A" },
+  { step: 2, stepTitle: "Set Your Goals", q: "For every financial goal you set, you should know:", opts: {A: "Only which product to buy", B: "Only the return you expect", C: "Nothing fixed – goals can stay open", D: "How much you need and by when"}, ans: "D" },
+  { step: 2, stepTitle: "Set Your Goals", q: "Your household expenses are ₹50,000 a month today. If inflation is 6% a year, roughly how much will the same lifestyle cost you each month in 12 years?", opts: {A: "₹1,00,000", B: "₹56,000", C: "₹86,000", D: "₹1,50,000"}, ans: "A" },
+  { step: 2, stepTitle: "Set Your Goals", q: "Why does starting your retirement savings early help you?", opts: {A: "You pay lower tax when you are young", B: "Markets rise only for young investors", C: "Your money gets more years to compound", D: "Your pension becomes guaranteed"}, ans: "C" },
+  { step: 3, stepTitle: "Protect Yourself and Your Family", q: "Your health insurance cover is ₹5 lakh. You are hospitalised and the bill is ₹7 lakh, all of it admissible. How much do you pay from your own pocket?", opts: {A: "₹7 lakh", B: "₹2 lakh", C: "₹5 lakh", D: "Nothing"}, ans: "B" },
+  { step: 3, stepTitle: "Protect Yourself and Your Family", q: "Your annual income is ₹12 lakh and you have a ₹40 lakh home loan. Using the rule 'life cover = 10 times annual income + outstanding loans', how much life cover do you need?", opts: {A: "₹1.2 crore", B: "₹40 lakh", C: "₹52 lakh", D: "₹1.6 crore"}, ans: "D" },
+  { step: 3, stepTitle: "Protect Yourself and Your Family", q: "Your health policy has a 20% co-payment. Your admissible hospital bill is ₹2,00,000. How much do you pay yourself?", opts: {A: "₹40,000", B: "₹20,000", C: "₹1,60,000", D: "Nothing"}, ans: "A" },
+  { step: 4, stepTitle: "Grow Your Wealth", q: "You invest ₹1,00,000 at 10% a year, compounded annually. How much will you have after 2 years?", opts: {A: "₹1,20,000", B: "₹1,21,000", C: "₹1,10,000", D: "₹1,02,000"}, ans: "B" },
+  { step: 4, stepTitle: "Grow Your Wealth", q: "Your FD earns 7% a year and inflation is 5%. What is your real return, roughly?", opts: {A: "12%", B: "7%", C: "2%", D: "5%"}, ans: "C" },
+  { step: 4, stepTitle: "Grow Your Wealth", q: "Equity investments suit your goals that are how far away?", opts: {A: "Less than 1 year", B: "1 to 2 years", C: "It makes no difference", D: "5 years or more"}, ans: "D" },
+  { step: 5, stepTitle: "Stay on Track and Secure Your Legacy", q: "In a year, you earn ₹1,50,000 of long-term capital gains from equity mutual funds. Gains up to ₹1.25 lakh a year are tax-free. On how much will you pay tax?", opts: {A: "₹1,50,000", B: "₹25,000", C: "₹1,25,000", D: "₹3,125"}, ans: "B" },
+  { step: 5, stepTitle: "Stay on Track and Secure Your Legacy", q: "Which document decides who finally inherits your assets after your death?", opts: {A: "A Will", B: "A Power of Attorney", C: "A Gift deed", D: "A Succession certificate"}, ans: "A" },
+  { step: 5, stepTitle: "Stay on Track and Secure Your Legacy", q: "How often should you review your financial plan?", opts: {A: "Only after a major life event", B: "Only once a year, on a fixed date", C: "At least once a year, and also after any major life event", D: "Whenever markets move sharply"}, ans: "C" }
+];
+
+function show(id){screens.forEach(s=>$(s).classList.toggle("hidden",s!==id));}
+function fmt(ms){let s=Math.max(0,Math.floor(ms/1000));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");}
+
+function startQuiz(){
+ const name=$("name").value.trim(), email=$("email").value.trim().toLowerCase();
+ $("regMsg").textContent="";
+ if(name.length<2){$("regMsg").textContent="Please enter your name.";return;}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){$("regMsg").textContent="Please enter a valid email ID.";return;}
+ if(!$("consent").checked){$("regMsg").textContent="Please provide consent to continue.";return;}
+ userDetails = {name, email}; answers = {}; index = 0; startTime = Date.now();
+ startClock(); show("quiz"); renderQuestion();
+}
+
+function renderQuestion(){
+ const q = quizData[index];
+ $("stepPill").textContent=`Step ${q.step} of 5`;
+ $("stepTitle").textContent=q.stepTitle;
+ $("questionCount").textContent=`Question ${index+1} of 15`;
+ $("questionText").textContent=q.q;
+ $("progressFill").style.width=((index+1)/15*100)+"%";
+ $("options").innerHTML="";
+ Object.entries(q.opts).forEach(([id, label])=>{
+  const lab=document.createElement("label"); lab.className="option";
+  const radio=document.createElement("input"); radio.type="radio"; radio.name="answer"; radio.value=id; radio.checked=answers[index]===id;
+  radio.addEventListener("change",()=>{answers[index]=id;});
+  const span=document.createElement("span"); span.textContent=label;
+  lab.append(radio,span); $("options").append(lab);
+ });
+ $("backBtn").disabled=index===0; $("nextBtn").textContent=index===14?"Submit quiz":"Next";
+}
+
+function move(d){
+ if(d===1&&index===14){if(confirm("Submit your quiz now? Unanswered questions receive zero points."))submitQuiz();return;}
+ index=Math.max(0,Math.min(14,index+d)); renderQuestion();
+}
+
+function startClock(){
+ endAt=Date.now()+QUIZ_SECONDS*1000;
+ const update=()=>{let left=Math.max(0,endAt-Date.now());$("timer").textContent=fmt(left);$("timer").classList.toggle("warn",left<=60000);if(left<=0){clearInterval(tick);submitQuiz();}};
+ update(); tick=setInterval(update,250);
+}
+
+function submitQuiz(){
+ clearInterval(tick); $("nextBtn").disabled=true; $("nextBtn").textContent="Submitting...";
+ let score = 0; let stepScores = [0,0,0,0,0];
+ quizData.forEach((q, i) => { 
+    if(answers[i] === q.ans) { score += 10; stepScores[q.step-1] += 10; }
+ });
+ const timeTaken = fmt(Date.now() - startTime);
+ 
+ const payload = {
+   name: userDetails.name,
+   email: userDetails.email,
+   score: score,
+   timeTaken: timeTaken,
+   answers: JSON.stringify(answers)
+ };
+
+ fetch(GOOGLE_SHEET_URL, {
+   method: 'POST',
+   mode: 'no-cors',
+   headers: { 'Content-Type': 'text/plain' },
+   body: JSON.stringify(payload)
+ }).then(() => {
+   $("score").textContent=`${score} / 150`;
+   $("resultTime").textContent=timeTaken;
+   $("stepScores").innerHTML=stepScores.map((v,i)=>`<div class="stepbox"><b>${v}/30</b>Step ${i+1}</div>`).join("");
+   show("result");
+ }).catch(() => {
+   alert("There was an issue saving your result, but your score is recorded.");
+ });
+}
+</script>
+</body></html>
